@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prashant Pandey's personal website showcasing his skills, projects, and experience in software development. Explore his portfolio and get in touch for collaborations.">
+    <meta name="keywords" content="Prashant Pandey, Portfolio, Software Developer, Projects, Experience">
+    <title>Prashant Pandey | Web Developer, Graphic Designer, Animation Artist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import Custom Font */
+        @font-face {
+            font-family: 'Ironmonger Inlaid';
+            /* Checks if installed on your PC first, then looks in the assets folder */
+            src: local('Ironmonger Inlaid'), 
+                 local('IronmongerInlaid'), 
+                 url('assets/IronmongerInlaid.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Base Styles */
+        :root {
+            --primary: #d900ff;
+            --secondary: #ff0000;
+            --accent: #b959d9;
+            --success: #27ae60;
+            --light: #f5f7fa;
+            --dark: #1a1a1a;
+            --text: #2c3e50;
+            --text-light: #666;
+            --border: #e0e6ed;
+            --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #e8c1f9;
+            overflow-x: hidden;
+        }
+        
+        h1, h2{
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--secondary), #1e5f8a);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(43, 127, 184, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 127, 184, 0.4);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--accent), #c74848);
+            box-shadow: 0 4px 12px rgba(217, 95, 89, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(217, 95, 89, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--light);
+            color: var(--secondary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            box-shadow: var(--shadow);
+            padding: 10px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 77, 122, 0.85), rgba(43, 127, 184, 0.75));
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 200px 0 140px;
+            min-height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: "Ironmonger Inlaid", sans-serif;
+            color: rgb(153, 0, 255);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 1), 2px 2px 2px rgba(255, 255, 255, 1), -2px -2px 2px rgba(255, 255, 255, 1);
+        }
+
+        .hero h2 {
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 1), 2px 2px 2px rgba(255, 255, 255, 1), -2px -2px 2px rgba(255, 255, 255, 1);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-preview {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+            background: transparent;
+            z-index: 0;
+        }
+
+        .hero-preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-preview img {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            object-fit: cover;
+            opacity: 1;
+            pointer-events: none;
+        }
+        
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mission Section */
+        .mission {
+            background-color: white;
+        }
+        
+        .mission-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .mission-text {
+            flex: 1;
+        }
+        
+        .mission-text h2 {
+            text-align: left;
+        }
+        
+        .mission-text h2::after {
+            left: 0;
+            transform: translateX(0);
+        }
+        
+        .mission-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .mission-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(-100%, -100%); }
+            100% { transform: translate(100%, 100%); }
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .vision-box {
+            background: linear-gradient(135deg, #f5f7fa, #e8eef7);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(43, 127, 184, 0.08);
+        }
+        
+        .vision-box h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Services Section */
+        .services {
+            background: linear-gradient(180deg, #f9fafb, #f0f3f8);
+        }
+        
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--accent);
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%),
+                        url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 77, 122, 0.7);
+        }
+        
+        .stats .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats h2 {
+            color: white;
+        }
+        
+        .stats h2:after {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+        }
+        
+        .stats-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Involvement Section */
+        .involvement {
+            background-color: white;
+        }
+        
+        .involvement-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .involvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .involvement-card {
+            background: linear-gradient(135deg, #ffffff, #f5f7fa);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .involvement-card:hover {
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+        
+        .involvement-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .involvement-card p {
+            margin-bottom: 2rem;
+            min-height: 60px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(180deg, #f5f7fa, #fff);
+        }
+        
+        .testimonials h2 {
+            margin-bottom: 3rem;
+        }
+        
+        .testimonial-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            display: none;
+            border-left: 5px solid var(--secondary);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 12px;
+        }
+        
+        .testimonial-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #d0d7e0;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .testimonial-dot:hover {
+            background-color: #b0b7c0;
+        }
+        
+        .testimonial-dot.active {
+            background-color: var(--secondary);
+            box-shadow: 0 0 0 6px rgba(43, 127, 184, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact h2 {
+            margin-bottom: 3rem;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 20px;
+            border-radius: 12px;
+            background: var(--light);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: var(--light);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item p {
+            margin: 0;
+            color: var(--text-light);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(43, 127, 184, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 160px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), #0d2d47);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-4px);
+            border-color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Success Message */
+        .form-success {
+            display: none;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .mission-content,
+            .contact-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .mission-image {
+                order: -1;
+            }
+            
+            .mission-text h2 {
+                text-align: center;
+            }
+            
+            .mission-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                box-shadow: var(--shadow);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 12px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .contact-item {
+                padding: 15px;
+            }
+            
+            .mission-content {
+                gap: 30px;
+            }
+            
+            .testimonial {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .nav-links {
+                gap: 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-content {
+                gap: 20px;
+            }
+            
+            h2:after {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Prashant Pandey <span>Portfolio</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#mission">RESUME</a></li>
+                    <li><a href="#services">Projects</a></li>
+                    <li><a href="#involvement">Internships</a></li>
+                    <li><a href="#GraphicWork">Graphic Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-preview">
+              <img src="https://lh3.googleusercontent.com/d/1Wm1Q5PPL98PafRmuRxWSDGn6WSjW8Rd1" alt="Prashant Pandey Hero Background" />
+        </div>
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <h2>Explore my work and get in touch for collaborations.</h2>
+            <div class="hero-btns">
+                <a href="#involvement" class="btn">Internships</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="#GraphicWork" class="btn">Graphic Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <a href="file:///C:/Users/Prashant%20Pandey/Desktop/myportfolio/Prashant_Pandey_Resume_2026%20(2).pdf" target="_blank" rel="noopener noreferrer" download>
+                        <span class="badge">My Resume</span>
+                    </a>
+                    <h2>PROFESSIONAL SUMMARY</h2>
+                    <p>Results-driven Computer Science graduate (B.Tech, IILM University, 2026) with hands-on experience in Graphic Design, Animation, Illustration, Web development, Game development, UI/UX design, and 3D/motion graphics. Proven ability to ship interactive digital experiences across web, mobile, and gaming platforms using Unity, React, Python, and Blender. Recognized with a First Prize at a national sustainability expo and experienced in agile team environments through professional internship training. </p>
+                    <p>Highly proficient in both technical and creative aspects of digital design, with a strong portfolio demonstrating versatility and innovation.</p>
+                    <div class="vision-box">
+                        <h3>Short Term Goals</h3>
+                        <p>Secure a position as a junior developer or designer to gain more industry experience and build upon my existing skill set.</p>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="https://lh3.googleusercontent.com/d/1erwD2_vZAZyE2FuOSJtd1JPe2ewhRTdz" alt="GitHub" style="width:620px;height:480px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="services-intro">
+                <h3>Here are some of the projects I have worked on:</h3>
+            </div>
+            <div c  lass="services-grid">
+                <div class="service-card"><a href="https://github.com/prashantpp07/Chess-Game" target="_blank" rel="noopener noreferrer">
+                    <div class="service-icon">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:48px;height:48px;">
+                    </div>
+                    <h3>Major Project- ARChess — Web-Based Augmented Reality Chess</h3>
+                    <p>• Engineered a browser-native WebAR chess framework rendering fully interactive 3D pieces on mobile devices without any app installation.<br>
+                       • Implemented real-time move validation and intuitive touch-based piece selection, achieving smooth 60 fps AR rendering. </p>
+                    </a>
+                </div><br>
+                <div class="service-card"><a href="https://github.com/prashantpp07/IceRunner" target="_blank" rel="noopener noreferrer">
+                    <div class="service-icon">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:48px;height:48px;">
+                    </div>
+                    <h3>Ice Runner — Endless Runner Game </h3>
+                    <p>• Designed and built a procedurally generated endless runner featuring dynamic obstacle spawning, increasing difficulty curves, and icy visual themes.<br> 
+                       • Optimized frame rate performance through object pooling and efficient collision detection, resulting in consistent gameplay on mid-range devices. <br>
+                       • Created all UI/UX wireframes and in-game assets in Figma before implementing them in Unity. </p></a>
+                </div><br>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:48px;height:48px;">
+                    </div>
+                    <h3>Health Bot — AI-Powered Health Assistant</h3>
+                    <p>• Developed a conversational health assistant providing evidence-based health tips, medical FAQs, and printable health reports. <br>
+                        • Applied user-centered design principles in Figma to prototype the interface before Java back-end integration, reducing 
+                        redesign iterations. </p>
+                </div><br>
+                <div class="service-card"><a href="https://drive.google.com/drive/folders/1XW42FQFfE_vyDNEJo3zXxPFaSmSUl0C2?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                    <div class="service-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Graphic & Animation Work & Edits</h3>
+                    <p>Connecting foster families and children with counseling, educational support, healthcare, and financial resources tailored to their needs.</p></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Involvement Section -->
+    <section class="involvement" id="involvement">
+        <div class="container">
+            <h2>My Internships</h2><a href="https://drive.google.com/file/d/1bPdNN9w_iIpXaRmwIaeBUKNCj22MCSEl/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                <div class="service-card">
+                     <div class="involvement-intro">
+                          <h3>Development Trainee | Reddington Global Consultancy Pvt. Ltd. | Gurugram, Haryana Jun 2025 – Jul 2025</h3>
+                          <p>
+                                • Collaborated with a cross-functional development team on live client projects, delivering front-end and back-end 
+                                features within sprint deadlines.<br>
+                                • Debugged and optimized user interfaces, improving functionality and reducing UI-related defect count. <br>
+                                • Contributed to agile ceremonies (stand-ups, sprint planning) and client-facing requirement discussions.<br> 
+                                • Received recognition from supervisors for rapid learning, attention to detail, and professional communication skills.</p>
+                    </div>
+                
+                 </div></a><br>
+            <a href="file:///D:/Prashant%20Pandey%20(1).pdf" target="_blank" rel="noopener noreferrer">
+                <div class="service-card">
+                     <div class="involvement-intro">
+                          <h3>Graphic Designer Intern | InAmigo Foundation | Remote Work</h3>
+                          <p>  • Completed graphic design projects for social impact initiatives, enhancing brand visibility and engagement.<br>
+                                • Created compelling visual content for social media campaigns, resulting in a 25% increase in online engagement.<br>
+                                • Designed event materials (banners, flyers) that contributed to a successful fundraising event with over 200 attendees.<br>
+                                • Collaborated with the marketing team to develop a cohesive visual identity across digital platforms.
+                          </p>
+                                                    </div>
+                
+                 </div></a>
+            <!-- <div class="involvement-grid">
+                <div class="involvement-card">
+                    <h3>
+                        <i class="fas fa-heart" style="color: var(--accent); margin-right: 10px;"></i>
+                        
+                    </h3>
+                    <p></p>
+                    <a href="#contact" class="btn"></a>
+                </div>
+                <div class="involvement-card">
+                    <h3>
+                        <i class="fas fa-handshake" style="color: var(--secondary); margin-right: 10px;"></i>
+                        
+                    </h3>
+                    <p></p>
+                    <a href="#contact" class="btn"></a>
+                </div>
+                <div class="involvement-card">
+                    <h3>
+                        <i class="fas fa-donate" style="color: var(--success); margin-right: 10px;"></i>
+                    </h3>
+                    <p></p>
+                    <a href="#contact" class="btn"></a>
+                </div>
+            </div>-->
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="GraphicWork" id="GraphicWork">
+        <div class="container"><a href="https://drive.google.com/drive/folders/1XW42FQFfE_vyDNEJo3zXxPFaSmSUl0C2?usp=drive_link" target="_blank" rel="noopener noreferrer">
+            <h2>My Graphic Design & Animation Work</h2>
+            <div class="service-card">
+              <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="GitHub" style="width:480px;height:620px;">
+              <img src="https://lh3.googleusercontent.com/d/1FqBmOkaQy1oq7zataU9m2F9WIKSqYPZC" alt="GitHub" style="width:480px;height:620px;">
+              <iframe src="https://drive.google.com/file/d/1orrXUIhcQfxyCbjhOt3cbK4PkHe7uD5q/preview" width="320" height="320" allow="autoplay"></iframe>
+              <iframe src="https://drive.google.com/file/d/1-21yowQoFHYEE6NFUyyaEhu8iX04neG8/preview" width="320" height="320" allow="autoplay"></iframe>
+              <iframe src="https://drive.google.com/file/d/1zWPWATLl2CUuZH2OtS33BSbtEKpIcBZ2/preview" width="320" height="320" allow="autoplay"></iframe>     
+              </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Let's Stay Connected</h2>
+            <div class="service-card" style="display: flex; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto;">
+    
+    <!-- Left Side: Image (Keeping your original dimensions) -->
+    <div class="card-image-wrapper">
+        <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="GitHub" style="width: 480px; height: 620px; object-fit: cover; display: block;">
+    </div>
+
+    <!-- Right Side: Contact Content -->
+    <div class="contact-content" style="flex: 1;">
+        <div class="contact-info">
+            
+            <div class="contact-item" style="margin-bottom: 20px;">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:pandeyprashantpp08@gmail.com" style="color: inherit;">pandeyprashantpp08@gmail.com</a></p>
+                </div>
+            </div>
+            
+            <div class="contact-item" style="margin-bottom: 20px;">
+                <div class="contact-icon">
+                    <img src="https://lh3.googleusercontent.com/d/1elr4chpGhmfbSsgrqA2O6PIihBlSiArI" alt="LinkedIn PROFILE" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;" />
+                </div>
+                <div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/prashant-pandey-a93907261" target="_blank" rel="noopener noreferrer" style="color: inherit;">Prashant Pandey</a></p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+918756827171" style="color: inherit;">+91 87568 27171</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Prashant Pandey Portfolio</h3>
+                    <p></p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/prashantpp7?igsh=NDIwZmFqcTlmbGRj" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/prashant-pandey-a93907261" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-container" style="display: flex; flex-direction: column; gap: 20px;">
+    
+                    <h3 style="margin: 0; padding-left: 0;">Quick Links</h3>
+                    
+                    <div class="footer-columns-wrapper" style="display: flex; gap: 100px;">
+                        
+                        <div class="footer-column">
+                            <ul class="footer-links" style="list-style: none; padding: 0; margin: 0;">
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#mission">RESUME</a></li>
+                                <li><a href="#services">Projects</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <ul class="footer-links" style="list-style: none; padding: 0; margin: 0;">
+                                <li><a href="#involvement">Internships</a></li>
+                                <li><a href="#GraphicWork">Graphic Work</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prashant Pandey. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Testimonial Slider
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = dot.getAttribute('data-slide');
+                showTestimonial(slideIndex);
+            });
+        });
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            testimonials[index].classList.add('active');
+            
+            testimonialDots.forEach(d => {
+                d.classList.remove('active');
+            });
+            testimonialDots[index].classList.add('active');
+        }
+        
+        // Auto-rotate testimonials
+        let currentTestimonial = 0;
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 6000);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            formSuccess.style.display = 'block';
+            contactForm.reset();
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                formSuccess.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
