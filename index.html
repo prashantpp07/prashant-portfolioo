@@ -716,7 +716,7 @@
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
         }
         
         .contact-info {
@@ -727,7 +727,7 @@
         
         .contact-item {
             display: flex;
-            gap: 20px;
+            gap: 80px;
             align-items: flex-start;
             padding: 20px;
             border-radius: 12px;
@@ -763,13 +763,13 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 60px;
         }
         
         .form-control {
             width: 100%;
             padding: 14px 18px;
-            border: 2px solid var(--border);
+            border: 6px solid var(--border);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
@@ -1070,7 +1070,7 @@
                     </div></a>
                 </div>
                 <div class="mission-image">
-                    <img src="https://lh3.googleusercontent.com/d/1erwD2_vZAZyE2FuOSJtd1JPe2ewhRTdz" alt="GitHub" style="width:620px;height:480px;">
+                    <img src="https://lh3.googleusercontent.com/d/1erwD2_vZAZyE2FuOSJtd1JPe2ewhRTdz" alt="GitHub" style="max-width: 100%; height: auto; object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -1182,32 +1182,35 @@
     <section class="GraphicWork" id="GraphicWork">
         <div class="container"><a href="https://drive.google.com/drive/folders/1XW42FQFfE_vyDNEJo3zXxPFaSmSUl0C2?usp=drive_link" target="_blank" rel="noopener noreferrer">
             <h2>My Graphic Design & Animation Work</h2>
-            <div class="service-card">
-              <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="GitHub" style="width:480px;height:620px;">
-              <img src="https://lh3.googleusercontent.com/d/1FqBmOkaQy1oq7zataU9m2F9WIKSqYPZC" alt="GitHub" style="width:480px;height:620px;">
-              <iframe src="https://drive.google.com/file/d/1orrXUIhcQfxyCbjhOt3cbK4PkHe7uD5q/preview" width="320" height="320" allow="autoplay"></iframe>
-              <iframe src="https://drive.google.com/file/d/1-21yowQoFHYEE6NFUyyaEhu8iX04neG8/preview" width="320" height="320" allow="autoplay"></iframe>
-              <iframe src="https://drive.google.com/file/d/1zWPWATLl2CUuZH2OtS33BSbtEKpIcBZ2/preview" width="320" height="320" allow="autoplay"></iframe>     
+            <div class="service-card" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
+              <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="Animation Work 1" style="width: 100%; max-width: 480px; aspect-ratio: 480/620; object-fit: cover; border-radius: 8px;">
+              <img src="https://lh3.googleusercontent.com/d/1FqBmOkaQy1oq7zataU9m2F9WIKSqYPZC" alt="Animation Work 2" style="width: 100%; max-width: 480px; aspect-ratio: 480/620; object-fit: cover; border-radius: 8px;">
+              <img src="https://lh3.googleusercontent.com/d/1RoQ-jVqP0C0iEwIejjRcm89j2iI9XuB-" alt="Animation Work 3" style="width: 100%; max-width: 480px; aspect-ratio: 480/620; object-fit: cover; border-radius: 8px;">
+              <img src="https://lh3.googleusercontent.com/d/1l3FP26LZjpbsf2XzepvIpH9bKGHyWfa6" alt="Animation Work 3" style="width: 100%; max-width: 480px; aspect-ratio: 480/620; object-fit: cover; border-radius: 8px;">
+              <iframe src="https://drive.google.com/file/d/1orrXUIhcQfxyCbjhOt3cbK4PkHe7uD5q/preview" style="max-width: 100%; width: 320px; height: 320px; border: none; border-radius: 8px;" allow="autoplay"></iframe>
+              <iframe src="https://drive.google.com/file/d/1-21yowQoFHYEE6NFUyyaEhu8iX04neG8/preview" style="max-width: 100%; width: 320px; height: 320px; border: none; border-radius: 8px;" allow="autoplay"></iframe>
+              <iframe src="https://drive.google.com/file/d/1zWPWATLl2CUuZH2OtS33BSbtEKpIcBZ2/preview" style="max-width: 100%; width: 320px; height: 320px; border: none; border-radius: 8px;" allow="autoplay"></iframe>     
               </div>
+              </div></a>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2>Let's Stay Connected</h2>
-            <div class="service-card" style="display: flex; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto;">
+            <div class="service-card" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; max-width: 1080px; margin: 0 auto;">
     
     <!-- Left Side: Image (Keeping your original dimensions) -->
-    <div class="card-image-wrapper">
-        <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="GitHub" style="width: 480px; height: 620px; object-fit: cover; display: block;">
+    <div class="card-image-wrapper" style="flex: 1; min-width: 300px; text-align: center;">
+        <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="GitHub" style="max-width: 100%; height: auto; max-height: 500px; object-fit: contain; display: inline-block;">
     </div>
 
     <!-- Right Side: Contact Content -->
-    <div class="contact-content" style="flex: 1;">
+    <div class="contact-content" style="flex: 1; min-width: 300px;">
         <div class="contact-info">
             
-            <div class="contact-item" style="margin-bottom: 20px;">
-                <div class="contact-icon">
+            <div class="contact-item" style="margin-bottom: 20px; align-items: center; text-align: left; gap: 30px;">
+                <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; min-width: 60px;">
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div>
@@ -1216,8 +1219,8 @@
                 </div>
             </div>
             
-            <div class="contact-item" style="margin-bottom: 20px;">
-                <div class="contact-icon">
+            <div class="contact-item" style="margin-bottom: 20px; align-items: center; text-align: left; gap: 30px;">
+                <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; min-width: 60px;">
                     <img src="https://lh3.googleusercontent.com/d/1elr4chpGhmfbSsgrqA2O6PIihBlSiArI" alt="LinkedIn PROFILE" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;" />
                 </div>
                 <div>
@@ -1226,8 +1229,8 @@
                 </div>
             </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
+            <div class="contact-item" style="align-items: center; text-align: left; gap: 30px;">
+                <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; min-width: 60px;">
                     <i class="fas fa-phone"></i>
                 </div>
                 <div>
@@ -1258,7 +1261,7 @@
     
                     <h3 style="margin: 0; padding-left: 0;">Quick Links</h3>
                     
-                    <div class="footer-columns-wrapper" style="display: flex; gap: 100px;">
+                    <div class="footer-columns-wrapper" style="display: flex; flex-wrap: wrap; gap: 40px;">
                         
                         <div class="footer-column">
                             <ul class="footer-links" style="list-style: none; padding: 0; margin: 0;">
