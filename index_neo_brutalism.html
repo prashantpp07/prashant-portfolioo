@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashant Pandey | Graphic Designer & Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Syne:wght@400;700;800&display=swap');
+
+        :root {
+            /* Neo-brutalist Dark Theme */
+            --bg: #09090b;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --accent-green: #cdfc00; /* Cyber-yellow/Neon-green */
+            --accent-blue: #00f0ff;
+            --accent-pink: #ff00ff;
+            --card-bg: #111116;
+            --border-color: #27272a;
+            
+            --border-thick: 3px solid var(--border-color);
+            --shadow-neo: 8px 8px 0px var(--accent-green);
+            --shadow-neo-blue: 8px 8px 0px var(--accent-blue);
+            --shadow-neo-pink: 8px 8px 0px var(--accent-pink);
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Syne', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND ANIMATION (INTERACTIVE GRID) --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        .title-huge {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .title-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--accent-blue);
+        }
+        
+        .title-highlight {
+            color: var(--accent-green);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            border-bottom: var(--border-thick);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            text-decoration: none;
+            border: 2px solid var(--accent-green);
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            color: var(--bg);
+            background: var(--text-primary);
+            border: 3px solid var(--text-primary);
+            box-shadow: 6px 6px 0px var(--accent-blue);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px var(--accent-blue);
+        }
+
+        .btn-green {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            box-shadow: 6px 6px 0px var(--text-primary);
+        }
+        
+        .btn-green:hover {
+            box-shadow: 10px 10px 0px var(--text-primary);
+            transform: translate(-4px, -4px);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 10rem;
+        }
+
+        .hero-desc {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- PORTFOLIO GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem 3rem;
+        }
+
+        .card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--card-bg);
+            border: var(--border-thick);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 8px 8px 0px var(--border-color);
+        }
+
+        .card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: var(--shadow-neo);
+            border-color: var(--accent-green);
+            z-index: 10;
+        }
+
+        .card:nth-child(even):hover {
+            box-shadow: var(--shadow-neo-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .card-tag {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: var(--text-primary);
+            color: var(--bg);
+            padding: 0.25rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .card:nth-child(even) .card-tag {
+            background: var(--accent-blue);
+        }
+        .card:nth-child(odd) .card-tag {
+            background: var(--accent-green);
+            color: var(--bg);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 250px;
+            background: #27272a;
+            border: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%) contrast(1.2);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .card-img img {
+            filter: grayscale(0%) contrast(1.1);
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-cta {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        
+        .card:hover .card-cta {
+            color: var(--accent-green);
+        }
+        .card:nth-child(even):hover .card-cta {
+            color: var(--accent-blue);
+        }
+
+        /* --- EXPERIENCES (List style) --- */
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2rem;
+            border: var(--border-thick);
+            margin-bottom: 1.5rem;
+            background: var(--bg);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .list-item:hover {
+            transform: translateX(10px);
+            box-shadow: -8px 8px 0px var(--accent-pink);
+            border-color: var(--accent-pink);
+        }
+
+        .list-item-content h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .list-item-content p {
+            color: var(--text-secondary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: var(--border-thick);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .list-item {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Looping Interactive Particle Mesh -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">PRASHANT PANDEY</a>
+        <a href="https://drive.google.com/file/d/1RdoPCW8klcQhx7_sPcTRB1AZqFuUBxre/view?usp=sharing" target="_blank" rel="noopener" class="btn">Resume</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1 class="title-huge">
+            Graphic <span class="title-outline">Designer</span><br>
+            & <span class="title-highlight">Developer</span>
+        </h1>
+        <p class="hero-desc">
+            ​I am a software developer and designer who loves bringing interactive digital experiences to life across web, mobile, and gaming platforms. With a B.Tech in Computer Science and hands-on experience working on live client projects at Reddington Global Consultancy, I’ve learned how to bridge the gap between technical backend logic and intuitive UI/UX design. My toolkit ranges from React and Python to Unity, Figma, and Blender, allowing me to build everything from browser-native AR applications to cinematic motion graphics. I enjoy solving complex structural problems just as much as I love diving into creative styling and animation.        </p>
+        <div>
+            <a href="#work" class="btn btn-green">View Projects</a>
+            <a href="mailto:pandeyprashantpp08@gmail.com" class="btn" style="margin-left: 1rem;">Let's Talk</a>
+        </div>
+    </section>
+    <br>
+
+    <!-- Work Section -->
+    <section id="work" class="container">
+        <h2 class="section-title">My Works</h2>
+        <div class="grid">
+            <!-- Project 1 -->
+            <a href="https://github.com/prashantpp07/Chess-Game" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-green),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">AR Chess</div>
+                </div>
+                <span class="card-tag">WebAR / 3D</span>
+                <h3>ARChess Framework</h3>
+                <p>Browser-native WebAR chess rendering fully interactive 3D mechanics directly on mobile without app installation.</p>
+                <span class="card-cta">View Source ➔</span>
+            </a>
+            
+            <!-- Project 2 -->
+            <a href="https://github.com/prashantpp07/IceRunner" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                     <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-pink),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">Ice Runner</div>
+                </div>
+                <span class="card-tag">Unity / Game Dev</span>
+                <h3>Ice Runner</h3>
+                <p>Procedurally generated endless runner featuring dynamic obstacle spawning and optimized mobile frame rates.</p>
+                <span class="card-cta">View Source ➔</span>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="https://drive.google.com/drive/folders/1XW42FQFfE_vyDNEJo3zXxPFaSmSUl0C2?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="Graphic Design Animation">
+                </div>
+                <span class="card-tag">Branding / Motion</span>
+                <h3>Visual Archive</h3>
+                <p>Curated collection of branding, robust 3D motion graphics, vivid illustrations, and meticulous UI wireframes.</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+            <!--project 4-->
+            <a href="#" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-pink),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">Health Bot</div>
+                </div>
+                    <span class="card-tag">Chat bot</span>
+                    <h3>Health Bot</h3>
+                    <p>• Developed a conversational health assistant providing evidence-based health tips, medical FAQs, and printable health reports. <br>
+                        • Applied user-centered design principles in Figma to prototype the interface before Java back-end integration, reducing 
+                        redesign iterations. </p>
+                
+            </a>
+        </div>
+    </section>
+    <br>
+    <section id="work" class="container">
+        <h2 class="section-title">Web works</h2>
+        <div class="grid">
+            <!-- Web work 1 -->
+            <a href="https://rgdebtrelief.com/" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-green),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">RG Debt</div>
+                </div>
+                <span class="card-tag">Web Design</span>
+                <h3>RG Debt Relief</h3>
+                <p>Spearheaded complete website architecture, aesthetic design, and frontend rollout for a prominent financial firm.</p>
+                <span class="card-cta">Visit Site ➔</span>
+            </a>
+
+            <a href="https://www.reddingtonglobal.com/" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-pink),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">Reddington Global Consultancy Pvt. Ltd.</div>
+                </div>
+                <span class="card-tag">Web Design</span>
+                <h3>Reddington Global Consultancy</h3>
+                <p>Spearheaded complete website architecture, aesthetic design, and frontend rollout for a prominent financial firm.</p>
+                <span class="card-cta">Visit Site ➔</span>
+            </a>
+
+        </div>
+    </section>
+<br>
+    <!-- Experience / Internships -->
+    <section class="container">
+        <h2 class="section-title">Experience / Internships</h2>
+        <div class="list">
+            <a href="https://drive.google.com/file/d/1bPdNN9w_iIpXaRmwIaeBUKNCj22MCSEl/view?usp=drive_link" target="_blank" rel="noopener" class="list-item">
+                <div class="list-item-content">
+                    
+                    <span class="card-tag">Reddington Global Consultancy</span>
+                    <h3>Development Trainee | June 2025 – July 2025</h3>
+                    <p>• Worked on web projects, delivering front-end and back-end features within sprint deadlines.<br>
+                                • Debugged and optimized user interfaces, improving functionality and reducing UI-related defect count. <br>
+                                • Received recognition from supervisors for rapid learning, attention to detail, and professional communication skills.</p>
+                </div>
+                <div class="btn" style="background:transparent;border:2px solid var(--border-color);color:var(--text-primary);box-shadow:none;">Certificate ➔</div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1DDEAK1eO57wuu7vHCHALtDHvGvaLLNtM/view?usp=sharing" target="_blank" rel="noopener" class="list-item">
+                <div class="list-item-content">
+                    <span class="card-tag">InAmigos Foundation</span>
+                    <h3>Graphic Designer Intern |  19 May 2026 – 3 June 2026</h3>
+                    <p>• Designed and created visual assets for various marketing materials and social media platforms.<br>
+                       • Collaborated with the content team to ensure brand consistency across all channels.<br>
+                       • Gained experience in Adobe Creative Suite and learned about the design process from concept to execution.</p>
+                </div>
+                <div class="btn" style="background:transparent;border:2px solid var(--border-color);color:var(--text-primary);box-shadow:none;">Certificate ➔</div>
+                
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 class="title-huge" style="font-size: clamp(2rem, 5vw, 4.5rem);">LET'S COLLABORATE.</h2>
+            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/prashant-pandey-a93907261" target="_blank" class="btn">LinkedIn</a>
+                <a href="mailto:pandeyprashantpp08@gmail.com" class="btn">Email</a>
+                <a href="tel:+918756827171" class="btn btn-green">Call Now - +91 87568 27171</a>
+            </div>
+            <p style="margin-top: 5rem; color: var(--text-secondary); font-family: var(--font-display); font-weight: 700; text-transform: uppercase;">© 2026 Prashant Pandey.</p>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Geometric Mesh Logic -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        const mouse = { x: -1000, y: -1000 };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        // Touch support for interaction
+        window.addEventListener('touchmove', e => {
+            if(e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1.5;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                // Randomly assign cyber-yellow or electric-blue to points
+                this.originalColor = Math.random() > 0.5 ? '#cdfc00' : '#00f0ff';
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges seamlessly
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.originalColor;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            // Dynamically scale particle count based on screen size
+            let count = (width * height) / 12000; 
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            // Slight clear to leave a tiny trail effect giving a smooth render illusion
+            ctx.fillStyle = 'rgba(9, 9, 11, 0.4)';
+            ctx.fillRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw connecting geometric mesh network naturally
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(161, 161, 170, ${0.2 - dist/650})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+                
+                // Interactive mouse-hover glowing tether effect
+                const mdx = particles[i].x - mouse.x;
+                const mdy = particles[i].y - mouse.y;
+                const mouseDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mouseDist < 180) {
+                    ctx.beginPath();
+                    // Glow matches the underlying particle
+                    ctx.strokeStyle = particles[i].originalColor.replace(')', ', 0.3)').replace('rgb', 'rgba');
+                    // Fallback for hex colors mapping just giving an opacity string trick:
+                    ctx.strokeStyle = `${particles[i].originalColor}40`; // 40 Hex is ~25% alpha
+                    ctx.lineWidth = 1.5;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        resize();
+        animate();
+    </script>
+</body>
+</html>
