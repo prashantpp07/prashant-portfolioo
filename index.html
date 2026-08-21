@@ -152,20 +152,90 @@
         }
 
         /* --- HERO --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 10rem;
-        }
+       /* =========================
+   HERO CONTENT
+========================= */
 
-        .hero-desc {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin-bottom: 3rem;
-            color: var(--text-secondary);
-        }
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+
+/* LEFT SIDE */
+
+.hero-left {
+    max-width: 700px;
+}
+
+.hero-desc {
+    line-height: 1.75;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.hero-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-wrapper a {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(0, 255, 255, 0.08);
+}
+
+
+/* HOVER EFFECT */
+
+.hero-image-wrapper a:hover .hero-image {
+    transform: translateY(-8px) scale(1.015);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(0, 255, 255, 0.16),
+        0 0 35px rgba(200, 255, 0, 0.08);
+}
+
+
 
         /* --- PORTFOLIO GRID --- */
         .grid {
@@ -313,6 +383,41 @@
                 gap: 1.5rem;
             }
         }
+        /* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .hero-image-wrapper {
+        justify-content: flex-start;
+    }
+
+    .hero-image-wrapper a {
+        max-width: 600px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-content {
+        margin-top: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        border-radius: 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -328,17 +433,62 @@
 
     <!-- Hero Section -->
     <section class="hero container">
-        <h1 class="title-huge">
-            Graphic <span class="title-outline">Designer</span><br>
-            & <span class="title-highlight">Developer</span>
-        </h1>
-        <p class="hero-desc">
-            ​I am a software developer and designer who loves bringing interactive digital experiences to life across web, mobile, and gaming platforms. With a B.Tech in Computer Science and hands-on experience working on live client projects at Reddington Global Consultancy, I’ve learned how to bridge the gap between technical backend logic and intuitive UI/UX design. My toolkit ranges from React and Python to Unity, Figma, and Blender, allowing me to build everything from browser-native AR applications to cinematic motion graphics. I enjoy solving complex structural problems just as much as I love diving into creative styling and animation.        </p>
-        <div>
-            <a href="#work" class="btn btn-green">View Projects</a>
-            <a href="mailto:pandeyprashantpp08@gmail.com" class="btn" style="margin-left: 1rem;">Let's Talk</a>
+
+    <h1 class="title-huge">
+        Graphic <span class="title-outline">Designer</span><br>
+        & <span class="title-highlight">Developer</span>
+    </h1>
+
+    <div class="hero-content">
+
+        <!-- LEFT SIDE -->
+        <div class="hero-left">
+            <p class="hero-desc">
+                I am a software developer and designer who loves bringing interactive
+                digital experiences to life across web, mobile, and gaming platforms.
+                With a B.Tech in Computer Science and hands-on experience working on
+                live client projects at Reddington Global Consultancy, I’ve learned
+                how to bridge the gap between technical backend logic and intuitive
+                UI/UX design.
+
+                My toolkit ranges from React and Python to Unity, Figma, and Blender,
+                allowing me to build everything from browser-native AR applications
+                to cinematic motion graphics. I enjoy solving complex structural
+                problems just as much as I love diving into creative styling and
+                animation.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#work" class="btn btn-green">View Projects</a>
+
+                <a href="mailto:pandeyprashantpp08@gmail.com"
+                   class="btn">
+                    Let's Talk
+                </a>
+            </div>
         </div>
-    </section>
+
+
+        <!-- RIGHT SIDE IMAGE -->
+        <div class="hero-image-wrapper">
+
+            <a
+                href="https://drive.google.com/file/d/1bhaSoUsrJGXrwPUjRMXLFVvyNHqJ-cnd/view"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img
+                    src="https://drive.google.com/thumbnail?id=1bhaSoUsrJGXrwPUjRMXLFVvyNHqJ-cnd&sz=w1200"
+                    alt="Prashant Pandey - Graphic Designer and Developer"
+                    class="hero-image"
+                >
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
     <br>
 
     <!-- Work Section -->
@@ -368,16 +518,6 @@
             </a>
 
             <!-- Project 3 -->
-            <a href="https://drive.google.com/drive/folders/1XW42FQFfE_vyDNEJo3zXxPFaSmSUl0C2?usp=drive_link" target="_blank" rel="noopener" class="card">
-                <div class="card-img">
-                    <img src="https://lh3.googleusercontent.com/d/16U-wZx09dsI3o879vFp8rLjrHTrlDi77" alt="Graphic Design Animation">
-                </div>
-                <span class="card-tag">Branding / Motion</span>
-                <h3>Visual Archive</h3>
-                <p>Curated collection of branding, robust 3D motion graphics, vivid illustrations, and meticulous UI wireframes.</p>
-                <span class="card-cta">View Archive ➔</span>
-            </a>
-            <!--project 4-->
             <a href="#" target="_blank" rel="noopener" class="card">
                 <div class="card-img">
                     <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,var(--accent-pink),var(--accent-blue));color:#09090b;font-family:var(--font-display);font-size:2.5rem;font-weight:900;">Health Bot</div>
@@ -392,6 +532,69 @@
         </div>
     </section>
     <br>
+
+    <!-- Graphic Design Showcase -->
+    <section id="graphics" class="container">
+        <h2 class="section-title">Graphic Design</h2>
+        <div class="grid">
+            <!-- Graphic 1 -->
+            <a href="https://drive.google.com/drive/folders/1Dw1jujz68-gJxmVxVCBUlfaanGLRlPOZ?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="file:///C:/Users/Prashant%20Pandey/Desktop/myportfolio/Brand%20Posters.webp" alt="Brand poster design">
+                </div>
+                <span class="card-tag">Branding</span>
+                <h3>Brand Posters</h3>
+                <p>Instagram carousel and story templates designed for consistent brand voice.</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+
+            <!-- Graphic 2 -->
+            <a href="https://drive.google.com/drive/folders/1hsWIQ7yNo3H22IkQ0AiE-W78DBFk6i5n?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/socialkit2/600/450" alt="Social media kit design">
+                </div>
+                <span class="card-tag">Image edits</span>
+                <h3>Image edits and quality boosts</h3>
+                <p>Instagram Image posts and story templates designed for Real Image edit work.</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+
+            <!-- Graphic 3 -->
+            <a href="https://drive.google.com/drive/folders/1tpxfgXVejXA6uITJiA-R3EimJ3VFIwiG?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/motiongfx3/600/450" alt="Motion graphics still frame">
+                </div>
+                <span class="card-tag">Videos Ai / Real / Motion Graphics</span>
+                <h3>Ai reel, Motion Reel, Video Edit</h3>
+                <p>Reel edited contents and Ai / Motion Reels for Instagram and Youtube</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+
+            <!-- Graphic 4 -->
+            <a href="https://drive.google.com/drive/folders/1Rt4W_jVcnxIOSj34hynaq1-ybBq0I4cR?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/uiwireframe4/600/450" alt="UI wireframe illustration">
+                </div>
+                <span class="card-tag">Animation</span>
+                <h3>Animation Work</h3>
+                <p>Simpal 2d animation work on various ideas</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+
+            <!-- Graphic 5 -->
+            <a href="https://drive.google.com/drive/folders/1nyJsjXgB8IGCtB5lWoCgcQnI0tpKZnW0?usp=drive_link" target="_blank" rel="noopener" class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/logofolio5/600/450" alt="Logo design collection">
+                </div>
+                <span class="card-tag">Logo Design / Illustration</span>
+                <h3>Logofolio</h3>
+                <p>A curated collection of logomarks exploring geometry, negative space, and type and work on Illustration.</p>
+                <span class="card-cta">View Archive ➔</span>
+            </a>
+        </div>
+    </section>
+    <br>
+
     <section id="work" class="container">
         <h2 class="section-title">Web works</h2>
         <div class="grid">
@@ -423,6 +626,17 @@
     <section class="container">
         <h2 class="section-title">Experience / Internships</h2>
         <div class="list">
+            <div class="list-item">
+                <div class="list-item-content">
+                    <span class="card-tag" style="background:var(--accent-pink);">DreyParkour MOVIEZ</span>
+                    <h3>Editor | 20 July 2026 – Present</h3>
+                    <p>• Editing daily reels, weekly animation series episodes, and long-format show content for a film &amp; entertainment production house.<br>
+                       • Creating thumbnails and supporting graphics for video releases.<br>
+                       • Managing end-to-end post-production workflow within a structured monthly work cycle.</p>
+                </div>
+                <div class="btn" style="background:transparent;border:2px solid var(--border-color);color:var(--text-primary);box-shadow:none;cursor:default;">Current Role</div>
+            </div>
+
             <a href="https://drive.google.com/file/d/1bPdNN9w_iIpXaRmwIaeBUKNCj22MCSEl/view?usp=drive_link" target="_blank" rel="noopener" class="list-item">
                 <div class="list-item-content">
                     
